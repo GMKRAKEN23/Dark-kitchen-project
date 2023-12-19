@@ -119,6 +119,7 @@ function createCard(parent, elementType, ClassName, textContent, src, alt, dataI
         element.setAttribute('data-index', dataIndex);
         element.addEventListener('click', addToCart);
     }
+
     parent.appendChild(element);
 
 }
@@ -146,3 +147,13 @@ collection.forEach(function (objet, index) {
         section2.appendChild(section);
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const body = document.body;
+    const circle = document.querySelector('.circle');
+  
+    circle.addEventListener('click', function () {
+      body.classList.toggle('dark-mode');
+    });
+  });
+  
