@@ -15,7 +15,8 @@
     <header class="header">
         <a href="#"><img src="../Dark-kitchen-project/assets/img/logo.png" alt="logo_good_kitchen" width="150"
                 height="150" class="logo"></a>
-        <a href="#"><img src="../Dark-kitchen-project/assets/img/logo2.png" alt="logo_good_kitchen_dark_mode" width="150" height="150" class="logo2"></a>
+        <a href="#"><img src="../Dark-kitchen-project/assets/img/logo2.png" alt="logo_good_kitchen_dark_mode"
+                width="150" height="150" class="logo2"></a>
         <nav class="header_nav_bar">
             <a href="#" class="header_nav_bar_link">Home</a>
             <a href="#" class="header_nav_bar_link">About</a>
@@ -54,7 +55,8 @@
 
         <!-- section_text_animation -->
         <div class="section_principal_text">
-            <div class="typewriter"><span class="letter_c">c</span>hoose your <span class="color_word">favorite dish</span></div>
+            <div class="typewriter"><span class="letter_c">c</span>hoose your <span class="color_word">favorite
+                    dish</span></div>
         </div>
         <!-- section_text_animation_end -->
 
@@ -71,7 +73,7 @@
             <button onclick="filterProducts('Meat')">Viande</button>
             <button onclick="filterProducts('Fish')">Poisson</button>
         </div>
-         <!-- section_sort -->
+        <!-- section_sort -->
 
         <section class="section1"></section>
         <section class="section2"></section>
@@ -122,8 +124,10 @@
             </div>
 
             <div class="footer_img_logo">
-                <a href="#"><img src="../Dark-kitchen-project/assets/img/logo.png" alt="logo_good_kitchen_dark_mode" width="150" height="150" class="logo"></a>
-            <a href="#"><img src="../Dark-kitchen-project/assets/img/logo2.png" alt="logo_good_kitchen_dark_mode" width="150" height="150" class="logo2"></a> 
+                <a href="#"><img src="../Dark-kitchen-project/assets/img/logo.png" alt="logo_good_kitchen_dark_mode"
+                        width="150" height="150" class="logo"></a>
+                <a href="#"><img src="../Dark-kitchen-project/assets/img/logo2.png" alt="logo_good_kitchen_dark_mode"
+                        width="150" height="150" class="logo2"></a>
             </div>
 
         </div>
@@ -132,13 +136,23 @@
     <!-- footer_end -->
 
     <script>
-        // let circle = document.querySelector('circle');
-        let circle = document.getElementById('circle')
-        console.log(circle)
-        circle.addEventListener('click', function(){
-            circle.style.transform = 'translate(40px)';
-    
+
+        let circle = document.getElementById('circle');
+        let isMoved = false;
+
+        circle.addEventListener('click', function () {
+            if (!isMoved) {
+
+                circle.style.transform = 'translate(40px)';
+                isMoved = true;
+            } else {
+
+                circle.style.transform = 'translate(0)';
+                circle.style.transition = '.3s';
+                isMoved = false;
+            }
         });
+
     </script>
     <script src="js/script.js"></script>
 </body>

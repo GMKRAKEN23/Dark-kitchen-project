@@ -60,6 +60,7 @@ body {
 }
 .dark-mode .circle {
   transition: 0.3s;
+  transform: translate(-40px);
 }
 .dark-mode .header {
   background: #171616 !important;
