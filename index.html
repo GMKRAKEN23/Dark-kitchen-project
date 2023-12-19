@@ -28,7 +28,7 @@
         </div>
 
         <div class="header_button_dark_mode">
-            <div class="circle"></div>
+            <div id="circle" class="circle"></div>
         </div>
 
         <div class="burger_menu" id="burger">
@@ -37,7 +37,7 @@
     </header>
 
     <!-- dropdown -->
-    <div id="drop">
+    <div id="drop" style="display: none;">
         <a href="#" class="header_nav_bar_link">Home</a>
         <a href="#" class="header_nav_bar_link">About</a>
         <a href="#" class="header_nav_bar_link">Menu</a>
@@ -131,6 +131,15 @@
     </footer>
     <!-- footer_end -->
 
+    <script>
+        // let circle = document.querySelector('circle');
+        let circle = document.getElementById('circle')
+        console.log(circle)
+        circle.addEventListener('click', function(){
+            circle.style.transform = 'translate(40px)';
+    
+        });
+    </script>
     <script src="js/script.js"></script>
 </body>
 
