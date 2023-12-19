@@ -330,6 +330,13 @@ body {
   width: 350px;
 }
 
+@media (max-width: 375px) {
+  .section1,
+  .section2 {
+    flex-direction: column;
+    max-width: 100%;
+  }
+}
 /* section_principal_end */
 /* footer */
 .footer {
