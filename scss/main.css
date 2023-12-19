@@ -262,7 +262,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  padding: 0 5%;
+  padding: 5%;
 }
 
 .section_principal_text {
@@ -313,6 +313,13 @@ body {
   flex-direction: row;
   width: 100%;
   margin: 0 auto;
+}
+@media (max-width: 1400px) {
+  .section1,
+  .section2 {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 .section_principal_input {
