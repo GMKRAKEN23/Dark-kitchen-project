@@ -383,6 +383,11 @@ button:hover {
   border: none;
 }
 
+.section1,
+.section2 {
+  width: 100%;
+}
+
 .card__img {
   width: 100%;
   height: 45%;

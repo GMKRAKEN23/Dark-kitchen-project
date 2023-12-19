@@ -151,9 +151,64 @@ collection.forEach(function (objet, index) {
 document.addEventListener('DOMContentLoaded', function () {
     const body = document.body;
     const circle = document.querySelector('.circle');
-  
+
     circle.addEventListener('click', function () {
-      body.classList.toggle('dark-mode');
+        body.classList.toggle('dark-mode');
     });
-  });
-  
+});
+document.getElementById('tousbutton').addEventListener('click', resetFilter);
+
+document.querySelector('#tousbutton').addEventListener('click', function () {
+    resetFilter();
+});
+
+function filterProducts(category) {
+
+    // Supprimer les éléments existants dans les sections
+    section1.innerHTML = '';
+    section2.innerHTML = '';
+
+    // Filtrer les éléments de la collection en fonction de la catégorie
+    const filteredItems = collection.filter(item => item.category.includes(category));
+
+    // Afficher les éléments filtrés
+    filteredItems.forEach((objet, index) => {
+        let section = document.createElement('section');
+        section.classList.add('card');
+
+        createCard(section, 'img', 'card__img', null, objet.picture, 'dish picture');
+        createCard(section, 'div', 'card__dish', objet.dish);
+        createCard(section, 'div', 'card__description', objet.description);
+        createCard(section, 'div', 'card__category', objet.category);
+        createCard(section, 'img', 'card__cart-icon', null, objet.picture2, 'Cart Icon');
+
+        if (index % 2 === 0) {
+            section1.appendChild(section);
+        } else {
+            section2.appendChild(section);
+        }
+    });
+
+}
+
+function resetFilter() {
+    section1.innerHTML = '';
+    section2.innerHTML = '';
+
+    collection.forEach((objet, index) => {
+        let section = document.createElement('section');
+        section.classList.add('card');
+
+        createCard(section, 'img', 'card__img', null, objet.picture, 'dish picture');
+        createCard(section, 'div', 'card__dish', objet.dish);
+        createCard(section, 'div', 'card__description', objet.description);
+        createCard(section, 'div', 'card__category', objet.category);
+        createCard(section, 'img', 'card__cart-icon', null, objet.picture2, 'Cart Icon');
+
+        if (index % 2 === 0) {
+            section1.appendChild(section);
+        } else {
+            section2.appendChild(section);
+        }
+    });
+}
