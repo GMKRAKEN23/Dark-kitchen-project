@@ -11,6 +11,7 @@ burgerMenu.addEventListener('click', function () {
 });
 
 // object
+// object
 
 const collection = [
     {
@@ -127,7 +128,7 @@ function createCard(parent, elementType, ClassName, textContent, src, alt, dataI
     }
     if (dataIndex !== undefined) {
         element.setAttribute('data-index', dataIndex);
-        element.addEventListener('click', addToCart);
+        element.addEventListener('click', addToCartProduct);
     }
 
     parent.appendChild(element);
@@ -190,7 +191,7 @@ function filterProducts(category) {
         createCard(section, 'div', 'card__dish', objet.dish);
         createCard(section, 'div', 'card__description', objet.description);
         createCard(section, 'div', 'card__category', objet.category);
-        createCard(section, 'button', 'ajouterpanier', objet.ajouterpanier, 'Ajouter au panier');
+        createCard(section, 'button', 'card__ajouterpanier', objet.ajouterpanier, 'Ajouter au panier');
 
         if (index % 2 === 0) {
             section1.appendChild(section);
@@ -213,7 +214,7 @@ function resetFilter() {
         createCard(section, 'div', 'card__dish', objet.dish);
         createCard(section, 'div', 'card__description', objet.description);
         createCard(section, 'div', 'card__category', objet.category);
-        createCard(section, 'button', 'ajouterpanier', objet.ajouterpanier, 'Ajouter au panier');
+        createCard(section, 'button', 'card__ajouterpanier', objet.ajouterpanier, 'Ajouter au panier');
 
         if (index % 2 === 0) {
             section1.appendChild(section);
@@ -223,84 +224,121 @@ function resetFilter() {
     });
 }
 // test
-const buttonCart = document.querySelector('.header_nav_bar_link[data-target="cart-modal"]');
 const modalCart = document.getElementById('cart-modal');
-const buttonFermer = document.querySelector('.close');
 
-buttonCart.addEventListener('click', ouvrirModal);
-buttonFermer.addEventListener('click', fermerModal);
+
+const buttonCart = document.querySelector('.header_nav_bar_link[data-target="cart-modal"]');
+const buttonFermer = document.querySelector('.close');
+const cartNavButton = document.querySelector('.header_nav_bar_link[data-target="cart-modal"]');
+
+
+if (buttonCart) {
+    buttonCart.addEventListener('click', ouvrirModal);
+}
+
+if (buttonFermer) {
+    buttonFermer.addEventListener('click', fermerModal);
+}
 
 function ouvrirModal() {
-    const modalCart = document.getElementById('cart-modal');
     if (modalCart) {
         modalCart.style.display = 'block';
     }
 }
 
 function fermerModal() {
-    modalCart.style.display = 'none';
+    if (modalCart) {
+        modalCart.style.display = 'none';
+    }
 }
 
 window.addEventListener('click', function (event) {
-    if (event.target === modalCart) {
+    if (modalCart && event.target === modalCart) {
         fermerModal();
     }
 });
 
 let panier = [];
+// Ajoutez cette ligne pour obtenir une référence directe à l'élément du panier
+const cartList = document.getElementById('cart-list');
 
-function addToCart(event) {
+// ...
+
+function addToCartProduct(event) {
     const index = event.currentTarget.getAttribute('data-index');
     const selectedItem = collection[index];
 
-    
+    // Ajouter l'élément au panier
     panier.push(selectedItem);
 
-   
+    // Mettre à jour l'affichage du panier
     updateCartDisplay();
 }
-function updateCartDisplay() {
-    const cartList = document.getElementById('cart-list');
-    const totalAmount = document.getElementById('total-amount');
 
-    
+function updateCartDisplay() {
+    // Effacer le contenu actuel du panier
     cartList.innerHTML = '';
 
-  
+    // Afficher les éléments du panier
     panier.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = item.dish;
 
-       
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Supprimer';
-        deleteButton.addEventListener('click', function () {
-            removeFromCart(index);
-        });
+        // Ajouter un bouton de suppression à côté de chaque élément du panier
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => removeFromCart(index));
 
-        li.appendChild(deleteButton);
+        li.appendChild(removeButton);
         cartList.appendChild(li);
     });
 
-
+    // Calculer et afficher le montant total (mettez à jour le code selon votre structure HTML)
+    const totalAmount = document.getElementById('total-amount');
     const montantTotal = panier.reduce((total, item) => total + parseFloat(item.price || 0), 0).toFixed(2);
     totalAmount.textContent = montantTotal + ' €';
 
-   
+    // Ouvrir la modale du panier
     ouvrirModal();
 }
-function removeFromCart(index) {
-   
-    panier.splice(index, 1);
-
-    
-    updateCartDisplay();
-}
 function clearCart() {
-   
+    // Vider le panier en réinitialisant le tableau panier
     panier = [];
 
-    
+    // Mettre à jour l'affichage du panier
     updateCartDisplay();
 }
+function removeFromCart(index) {
+    // Vérifier si l'index est valide
+    if (index >= 0 && index < panier.length) {
+        // Supprimer l'élément du panier en utilisant splice
+        panier.splice(index, 1);
 
+        // Mettre à jour l'affichage du panier
+        updateCartDisplay();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const cartNavButton = document.getElementById('cartNavButton');
+
+
+    const modalCart = document.getElementById('cart-modal');
+
+
+    if (cartNavButton) {
+
+        cartNavButton.addEventListener('click', function (event) {
+
+            event.preventDefault();
+
+
+            if (modalCart) {
+                modalCart.style.display = 'block';
+            }
+        });
+    } else {
+        console.log('Le bouton "Cart" n\'a pas été trouvé.');
+    }
+});

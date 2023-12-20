@@ -169,7 +169,9 @@ body {
   display: none;
 }
 .header .header_nav_bar {
-  width: 80%;
+  width: 90%;
+  display: flex;
+  align-items: center;
 }
 @media (max-width: 800px) {
   .header .header_nav_bar {
@@ -327,6 +329,7 @@ body {
   .section2 {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
@@ -390,6 +393,7 @@ button:hover {
 .card {
   cursor: pointer;
   width: 25%;
+  min-width: 250px;
   margin: 15px;
   background: white;
   border-radius: 20px;
@@ -549,6 +553,20 @@ button:hover {
   background-color: #fff;
   padding: 20px;
   text-align: center;
+  border-radius: 20px;
+}
+.modal-content h2 {
+  margin: 20px 0;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.modal-content button {
+  width: 80%;
+  margin: 10px 0;
+}
+.modal-content #total-amount {
+  font-weight: 900;
+  color: #008000;
 }
 
 .close {

@@ -174,7 +174,9 @@ body {
     @include flex-container($direction: row, $justify: space-between, $align: center);
 
     .header_nav_bar {
-        width: 80%;
+        width: 90%;
+        display: flex;
+        align-items: center;
 
         @include media-maxwidth($medium-size) {
             display: none;
@@ -341,6 +343,7 @@ body {
     @include media-maxwidth($large-size) {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
     display: flex;
     flex-direction: row;
@@ -411,6 +414,7 @@ button {
 .card {
     cursor: pointer;
     width: 25%;
+    min-width: 250px;
     margin: 15px;
     background: white;
     border-radius: 20px;
@@ -580,6 +584,20 @@ button {
     background-color: #fff;
     padding: 20px;
     text-align: center;
+    border-radius: 20px;
+    h2{
+        margin: 20px 0;
+        font-weight: 900;
+        letter-spacing: 2px;
+    }
+    button{
+        width: 80%;
+        margin: 10px 0;
+    }
+    #total-amount{
+        font-weight: 900;
+        color: #008000;
+    }
 }
 
 .close {
