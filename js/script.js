@@ -19,6 +19,7 @@ const collection = [
         description: "A hearty pasta dish with a rich, slow-cooked meat sauce that typically includes ground beef, tomatoes, onions, and garlic.",
         category: "Category: Pasta",
         ajouterpanier: "Add to cart",
+        price: "10.99$",
     },
     {
         picture: "assets/carbonara.jpeg",
@@ -26,6 +27,7 @@ const collection = [
         description: "A classic Italian dish featuring pasta served with a creamy sauce made from eggs, cheese, pancetta, and black pepper.",
         category: "Category: Pasta",
         ajouterpanier: "Add to cart",
+        price: "12.99$",
     },
     {
         picture: "assets/pates_vege.jpeg",
@@ -33,6 +35,7 @@ const collection = [
         description: "Vegetarian pasta dish with a medley of fresh vegetables, herbs, and possibly a flavorful tomato or cream sauce.",
         category: "Category: Pasta",
         ajouterpanier: "Add to cart",
+        price: "13.99$",
     },
     {
         picture: "assets/filet_pur.jpeg",
@@ -40,6 +43,7 @@ const collection = [
         description: "A tender and juicy 250g beef tenderloin steak, often prepared to your preferred level of doneness.",
         category: "Category: Meat",
         ajouterpanier: "Add to cart",
+        price: "10.50$",
     },
     {
         picture: "assets/Escal.jpg",
@@ -47,6 +51,7 @@ const collection = [
         description: "A Milanese-style dish featuring breaded and pan-fried veal or chicken cutlets, served with a wedge of lemon.",
         category: "Category: Meat",
         ajouterpanier: "Add to cart",
+        price: "10.99$",
     },
     {
         picture: "assets/entrecote.jpeg",
@@ -54,6 +59,7 @@ const collection = [
         description: "A succulent 350g ribeye steak, known for its rich flavor and generous marbling.",
         category: "Category: Meat",
         ajouterpanier: "Add to cart",
+        price: "10.99$",
     },
     {
         picture: "assets/Broch.jpg",
@@ -61,6 +67,7 @@ const collection = [
         description: "Skewers of marinated and grilled lamb, offering a delightful combination of flavors and tenderness.",
         category: "Category: Meat",
         ajouterpanier: "Add to cart",
+        price: "10.99$",
     },
     {
         picture: "assets/moules_mariniere.jpeg",
@@ -68,6 +75,7 @@ const collection = [
         description: "Fresh mussels cooked in a white wine, garlic, and herb broth, creating a savory and aromatic seafood dish.",
         category: "Category: Fish",
         ajouterpanier: "Add to cart",
+        price: "10.99$",
     },
     {
         picture: "assets/sole_meuniere.webp",
@@ -75,6 +83,7 @@ const collection = [
         description: "A classic French dish featuring sole fish dredged in flour and pan-fried in a buttery sauce with lemon and parsley.",
         category: "Category: Fish",
         ajouterpanier: "Add to cart",
+        price: "10.99$",
     },
     {
         picture: "assets/dos_de_cabillaud.jpeg",
@@ -82,6 +91,7 @@ const collection = [
         description: "Grilled or baked cod fillet, known for its mild flavor and versatility, often served with complementary sauces or seasonings.",
         category: "Category: Fish",
         ajouterpanier: "Add to cart",
+        price: "10.99$",
     },
 
 
@@ -138,7 +148,7 @@ collection.forEach(function (objet, index) {
 
     createCard(section, 'div', 'card__category', objet.category);
 
-    createCard(section, 'button', 'card__ajouterpanier', objet.ajouterpanier, 'Ajouter au panier');
+    createCard(section, 'button', 'card__ajouterpanier', objet.ajouterpanier, 'Ajouter au panier', null, index);
 
     if (index % 2 === 0) {
         section1.appendChild(section);
@@ -211,4 +221,85 @@ function resetFilter() {
             section2.appendChild(section);
         }
     });
+}
+// test
+const buttonCart = document.querySelector('.header_nav_bar_link[data-target="cart-modal"]');
+const modalCart = document.getElementById('cart-modal');
+const buttonFermer = document.querySelector('.close');
+
+buttonCart.addEventListener('click', ouvrirModal);
+buttonFermer.addEventListener('click', fermerModal);
+
+function ouvrirModal() {
+    const modalCart = document.getElementById('cart-modal');
+    if (modalCart) {
+        modalCart.style.display = 'block';
+    }
+}
+
+function fermerModal() {
+    modalCart.style.display = 'none';
+}
+
+window.addEventListener('click', function (event) {
+    if (event.target === modalCart) {
+        fermerModal();
+    }
+});
+
+let panier = [];
+
+function addToCart(event) {
+    const index = event.currentTarget.getAttribute('data-index');
+    const selectedItem = collection[index];
+
+    
+    panier.push(selectedItem);
+
+   
+    updateCartDisplay();
+}
+function updateCartDisplay() {
+    const cartList = document.getElementById('cart-list');
+    const totalAmount = document.getElementById('total-amount');
+
+    
+    cartList.innerHTML = '';
+
+  
+    panier.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = item.dish;
+
+       
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Supprimer';
+        deleteButton.addEventListener('click', function () {
+            removeFromCart(index);
+        });
+
+        li.appendChild(deleteButton);
+        cartList.appendChild(li);
+    });
+
+
+    const montantTotal = panier.reduce((total, item) => total + parseFloat(item.price || 0), 0).toFixed(2);
+    totalAmount.textContent = montantTotal + ' €';
+
+   
+    ouvrirModal();
+}
+function removeFromCart(index) {
+   
+    panier.splice(index, 1);
+
+    
+    updateCartDisplay();
+}
+function clearCart() {
+   
+    panier = [];
+
+    
+    updateCartDisplay();
 }

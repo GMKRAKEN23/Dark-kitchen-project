@@ -13,15 +13,15 @@
 
     <!-- header -->
     <header class="header">
-        <a href="#"><img src="./assets/img/logo.png" alt="logo_good_kitchen" width="150"
+        <a href="index.html"><img src="./assets/img/logo.png" alt="logo_good_kitchen" width="150"
                 height="150" class="logo"></a>
-        <a href="#"><img src="./assets/img/logo2.png" alt="logo_good_kitchen_dark_mode"
+        <a href="index.html"><img src="./assets/img/logo2.png" alt="logo_good_kitchen_dark_mode"
                 width="150" height="150" class="logo2"></a>
         <nav class="header_nav_bar">
             <a href="#" class="header_nav_bar_link">Home</a>
             <a href="#" class="header_nav_bar_link">About</a>
             <a href="#" class="header_nav_bar_link">Menu</a>
-            <a href="#" class="header_nav_bar_link">Cart</a>
+            <a href="#" class="header_nav_bar_link">Cart<div id="cart" class="cart_items"></div>
         </nav>
         <div class="header_button">
             <a href="#" class="header_button_order_online">Order</a>
@@ -42,11 +42,8 @@
         <a href="#" class="header_nav_bar_link">Home</a>
         <a href="#" class="header_nav_bar_link">About</a>
         <a href="#" class="header_nav_bar_link">Menu</a>
-<<<<<<< HEAD
-        <a href="#" class="header_nav_bar_link">Cart</a>
-=======
         <a href="#" class="header_nav_bar_link">Cart<div id="cart" class="cart_items"><!-- Le contenu du panier sera ajouté ici --></div></a>
->>>>>>> 416d4c4049a2fe646f0dc6c16fe5ebe7c0278b25
+
         <a href="#" class="header_button_order_online">Order</a>
         <a href="#" class="header_button_reservate">Reservate</a>
     </div>
@@ -128,9 +125,9 @@
             </div>
 
             <div class="footer_img_logo">
-                <a href="#"><img src="./assets/img/logo.png" alt="logo_good_kitchen_dark_mode"
+                <a href="index.html"><img src="./assets/img/logo.png" alt="logo_good_kitchen_dark_mode"
                         width="150" height="150" class="logo"></a>
-                <a href="#"><img src="./assets/img/logo2.png" alt="logo_good_kitchen_dark_mode"
+                <a href="index.html"><img src="./assets/img/logo2.png" alt="logo_good_kitchen_dark_mode"
                         width="150" height="150" class="logo2"></a>
             </div>
 
@@ -138,6 +135,16 @@
 
     </footer>
     <!-- footer_end -->
+
+    <div id="cart-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fermerModal()">&times;</span>
+                <h2>Panier d'achat</h2>
+                <ul id="cart-list"></ul>
+                <p>Montant total : <span id="total-amount">0,00 €</span></p>
+                <button onclick="clearCart()">Vider le panier</button>
+            </div>
+    </div>
 
     <script>
 
@@ -156,7 +163,6 @@
                 isMoved = false;
             }
         });
-
     </script>
     <script src="js/script.js"></script>
 </body>
