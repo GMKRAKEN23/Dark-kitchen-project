@@ -303,3 +303,4 @@ function clearCart() {
     
     updateCartDisplay();
 }
+

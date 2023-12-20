@@ -13,10 +13,10 @@
 
     <!-- header -->
     <header class="header">
-        <a href="index.html"><img src="./assets/img/logo.png" alt="logo_good_kitchen" width="150"
-                height="150" class="logo"></a>
-        <a href="index.html"><img src="./assets/img/logo2.png" alt="logo_good_kitchen_dark_mode"
-                width="150" height="150" class="logo2"></a>
+        <a href="index.html"><img src="./assets/img/logo.png" alt="logo_good_kitchen" width="150" height="150"
+                class="logo"></a>
+        <a href="index.html"><img src="./assets/img/logo2.png" alt="logo_good_kitchen_dark_mode" width="150"
+                height="150" class="logo2"></a>
         <nav class="header_nav_bar">
             <a href="#" class="header_nav_bar_link">Home</a>
             <a href="#" class="header_nav_bar_link">About</a>
@@ -42,7 +42,8 @@
         <a href="#" class="header_nav_bar_link">Home</a>
         <a href="#" class="header_nav_bar_link">About</a>
         <a href="#" class="header_nav_bar_link">Menu</a>
-        <a href="#" class="header_nav_bar_link">Cart<div id="cart" class="cart_items"><!-- Le contenu du panier sera ajouté ici --></div></a>
+        <a href="#" class="header_nav_bar_link">Cart<div id="cart" class="cart_items">
+                <!-- Le contenu du panier sera ajouté ici --></div></a>
 
         <a href="#" class="header_button_order_online">Order</a>
         <a href="#" class="header_button_reservate">Reservate</a>
@@ -125,10 +126,10 @@
             </div>
 
             <div class="footer_img_logo">
-                <a href="index.html"><img src="./assets/img/logo.png" alt="logo_good_kitchen_dark_mode"
-                        width="150" height="150" class="logo"></a>
-                <a href="index.html"><img src="./assets/img/logo2.png" alt="logo_good_kitchen_dark_mode"
-                        width="150" height="150" class="logo2"></a>
+                <a href="index.html"><img src="./assets/img/logo.png" alt="logo_good_kitchen_dark_mode" width="150"
+                        height="150" class="logo"></a>
+                <a href="index.html"><img src="./assets/img/logo2.png" alt="logo_good_kitchen_dark_mode" width="150"
+                        height="150" class="logo2"></a>
             </div>
 
         </div>
@@ -137,17 +138,16 @@
     <!-- footer_end -->
 
     <div id="cart-modal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="fermerModal()">&times;</span>
-                <h2>Panier d'achat</h2>
-                <ul id="cart-list"></ul>
-                <p>Montant total : <span id="total-amount">0,00 €</span></p>
-                <button onclick="clearCart()">Vider le panier</button>
-            </div>
+        <div class="modal-content">
+            <span class="close" onclick="fermerModal()">&times;</span>
+            <h2>Panier d'achat</h2>
+            <ul id="cart-list"></ul>
+            <p>Montant total : <span id="total-amount">0,00 €</span></p>
+            <button onclick="clearCart()">Vider le panier</button>
+        </div>
     </div>
 
     <script>
-
         let circle = document.getElementById('circle');
         let isMoved = false;
 
