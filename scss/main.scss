@@ -304,6 +304,11 @@ body {
     animation: cursor 2s step-start infinite,
         text 3s steps(17) alternate infinite;
     color: $primary_color_black;
+    @include media-maxwidth($medium-size) {
+        animation: none !important;
+        border: none;
+        white-space: wrap;
+    }
 }
 
 .color_word {
@@ -373,6 +378,7 @@ body {
 /* box_sort */
 
 .trier {
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
@@ -415,7 +421,7 @@ button {
     }
     .card__description{
         text-align: justify;
-        padding: 10px 10px;
+        padding: 10px;
     }
     .card__dish{
         font-size: 1.2rem;
@@ -460,6 +466,9 @@ button {
 .footer {
     box-shadow: 0 0px 10px rgb(159, 152, 152);
     padding: 0 5%;
+    a .logo2 {
+        display: none;
+    }
 }
 
 .footer_paragraphe_box {
@@ -494,10 +503,6 @@ button {
         &:hover {
             color: $primary_color_orange;
         }
-    }
-
-    .logo2 {
-        display: none;
     }
 }
 
