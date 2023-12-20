@@ -190,7 +190,7 @@ function filterProducts(category) {
         createCard(section, 'div', 'card__dish', objet.dish);
         createCard(section, 'div', 'card__description', objet.description);
         createCard(section, 'div', 'card__category', objet.category);
-        createCard(section, 'button', 'ajouterpanier', null, objet.ajouterpanier, 'Ajouter au panier');
+        createCard(section, 'button', 'ajouterpanier', objet.ajouterpanier, 'Ajouter au panier');
 
         if (index % 2 === 0) {
             section1.appendChild(section);
@@ -213,7 +213,7 @@ function resetFilter() {
         createCard(section, 'div', 'card__dish', objet.dish);
         createCard(section, 'div', 'card__description', objet.description);
         createCard(section, 'div', 'card__category', objet.category);
-        createCard(section, 'button', 'ajouterpanier', null, objet.ajouterpanier, 'Ajouter au panier');
+        createCard(section, 'button', 'ajouterpanier', objet.ajouterpanier, 'Ajouter au panier');
 
         if (index % 2 === 0) {
             section1.appendChild(section);

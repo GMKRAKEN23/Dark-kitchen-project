@@ -557,4 +557,10 @@ button:hover {
   right: 10px;
   font-size: 20px;
   cursor: pointer;
+}
+
+.card .ajouterpanier {
+  width: 70%;
+  border-radius: 20px;
+  margin: 15px auto;
 }/*# sourceMappingURL=main.css.map */
