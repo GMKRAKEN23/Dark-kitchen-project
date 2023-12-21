@@ -226,7 +226,6 @@ function resetFilter() {
 // test
 const modalCart = document.getElementById('cart-modal');
 
-
 const buttonCart = document.querySelector('.header_nav_bar_link[data-target="cart-modal"]');
 const buttonFermer = document.querySelector('.close');
 const cartNavButton = document.querySelector('.header_nav_bar_link[data-target="cart-modal"]');
